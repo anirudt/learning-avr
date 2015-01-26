@@ -1,0 +1,37 @@
+/*
+ * BtoC.asm
+ *
+ *  Created: 13-01-2015 14:51:06
+ *   Author: Thyagu
+ */ 
+
+ .INCLUDE "M32DEF.INC"
+ .ORG 0
+		LDI R16, HIGH(RAMEND)
+		OUT SPH, R16
+		LDI R16, LOW(RAMEND)
+		OUT SPL, R16
+
+ MAIN:
+		LDI R16, 0x00
+		OUT DDRB, R16
+		LDI R16, 0xFF
+		OUT DDRC, R16
+		IN R16, PINB
+		OUT PINC, R16
+		CALL BGLOW
+		RJMP MAIN
+
+BGLOW:	LDI R16, 0xFF
+		OUT PORTB, R16
+		CALL DELAY
+
+DELAY:	NOP
+		NOP
+		NOP
+		DEC R16
+		BRNE DELAY
+		RET
+
+
+			 

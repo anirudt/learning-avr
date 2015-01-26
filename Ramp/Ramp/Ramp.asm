@@ -1,0 +1,36 @@
+/*
+ * Ramp.asm
+ *
+ *  Created: 22-01-2015 14:43:22
+ *   Author: Thyagu
+ */ 
+		.INCLUDE "M32DEF.INC"
+		.ORG 0
+
+		LDI R16, HIGH(RAMEND)
+		OUT SPH, R16
+		LDI R16, LOW(RAMEND)
+		OUT SPL, R16
+
+		LDI R16, 0xFF
+		OUT DDRB, R16
+
+FALL:	OUT PORTB, R16 ; Will make Port B high 
+		CALL Delay
+		DEC R16
+		BRNE FALL
+
+RISE:	OUT PORTB, R16
+		CALL Delay
+		INC R16
+		CPI R16, 0xFF
+		BRNE RISE 
+
+		OUT PORTB, R16
+		RJMP FALL
+
+Delay:	LDI R17, 0xFF
+D1:		DEC R17
+		BRNE D1
+		RET 
+

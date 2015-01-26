@@ -1,0 +1,31 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.57</VERSION>
+ <DEVICE>"ATmega32"</DEVICE>
+ <WORKING_DIR>C:\Users\Thyagu\Documents\Embedded_Lab\Sine\Sine\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Sine\Sine\Sine.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include\m32def.inc</FILE>
+  <FILE>C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include\M32DEF.INC</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Sine\Sine\Debug/Sine.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Sine.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Sine.map</FILE>
+  <FILE>Sine.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <LOOP1><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Sine\Sine\Sine.asm</FILE><LINE>19</LINE></LOOP1>
+  <SINE><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Sine\Sine\Sine.asm</FILE><LINE>37</LINE></SINE>
+  <LOOP2><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Sine\Sine\Sine.asm</FILE><LINE>22</LINE></LOOP2>
+  <Delay><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Sine\Sine\Sine.asm</FILE><LINE>31</LINE></Delay>
+  <D1><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Sine\Sine\Sine.asm</FILE><LINE>32</LINE></D1>
+ </LABELS>
+</ASSEMBLER_INFO>

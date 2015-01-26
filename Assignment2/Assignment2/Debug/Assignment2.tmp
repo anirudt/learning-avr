@@ -1,0 +1,34 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.57</VERSION>
+ <DEVICE>"ATmega32"</DEVICE>
+ <WORKING_DIR>C:\Users\Thyagu\Documents\Embedded_Lab\Assignment2\Assignment2\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Assignment2\Assignment2\Assignment2.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include\m32def.inc</FILE>
+  <FILE>C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include\M32DEF.INC</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Assignment2\Assignment2\Debug/Assignment2.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Assignment2.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Assignment2.map</FILE>
+  <FILE>Assignment2.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <DELAY_2ms><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Assignment2\Assignment2\Assignment2.asm</FILE><LINE>108</LINE></DELAY_2ms>
+  <CMNDWRT><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Assignment2\Assignment2\Assignment2.asm</FILE><LINE>78</LINE></CMNDWRT>
+  <DATAWRT><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Assignment2\Assignment2\Assignment2.asm</FILE><LINE>87</LINE></DATAWRT>
+  <HERE><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Assignment2\Assignment2\Assignment2.asm</FILE><LINE>75</LINE></HERE>
+  <SDELAY><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Assignment2\Assignment2\Assignment2.asm</FILE><LINE>96</LINE></SDELAY>
+  <DELAY_100us><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Assignment2\Assignment2\Assignment2.asm</FILE><LINE>100</LINE></DELAY_100us>
+  <DR0><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Assignment2\Assignment2\Assignment2.asm</FILE><LINE>102</LINE></DR0>
+  <LDR0><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Assignment2\Assignment2\Assignment2.asm</FILE><LINE>110</LINE></LDR0>
+ </LABELS>
+</ASSEMBLER_INFO>

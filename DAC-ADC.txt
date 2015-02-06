@@ -1,0 +1,1 @@
+1. You could put resistor at 2, so that you get a positive voltage.

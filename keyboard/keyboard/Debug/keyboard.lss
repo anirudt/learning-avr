@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.57  C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm Fri Feb 06 16:07:37 2015
+AVRASM ver. 2.1.57  C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm Thu Feb 12 19:21:08 2015
 
 [builtin](2): Including file 'C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include\m32def.inc'
 C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm(9): Including file 'C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include\M32DEF.INC'
@@ -871,15 +871,16 @@ C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm(9): Includ
                  
                  #endif  /* _M32DEF_INC_ */
                  
-                 .EQU KEY_PORT = PORTC
-                 .EQU KEY_PIN = PINC
-                 .EQU KEY_DDR = DDRC
-                 .EQU LCD_DPRT = PORTA ; LCD DATA PORT
-                 .EQU LCD_DDDR = DDRA ;LCD DATA DDR
-                 .EQU LCD_DPIN = PINA ;LCD DATA PIN
-                 .EQU LCD_CPRT = PORTB ;LCD COMMANDS PORT
-                 .EQU LCD_CDDR = DDRB ;LCD COMMANDS DDR
-                 .EQU LCD_CPIN = PINB ;LCD COMMANDS PIN
+                  .ORG 0
+                 .EQU KEY_PORT = PORTB
+                 .EQU KEY_PIN = PINB
+                 .EQU KEY_DDR = DDRB
+                 .EQU LCD_DPRT = PORTC; LCD DATA PORT
+                 .EQU LCD_DDDR = DDRC ;LCD DATA DDR
+                 .EQU LCD_DPIN = PINC ;LCD DATA PIN
+                 .EQU LCD_CPRT = PORTD ;LCD COMMANDS PORT
+                 .EQU LCD_CDDR = DDRD ;LCD COMMANDS DDR
+                 .EQU LCD_CPIN = PIND ;LCD COMMANDS PIN
                  .EQU LCD_RS = 0 ;LCD RS
                  .EQU LCD_RW = 1 ;LCD RW
                  .EQU LCD_EN = 2 ;LCD EN
@@ -888,181 +889,178 @@ C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm(9): Includ
 000001 bf4e      		OUT SPH, R20
 000002 e54f      		LDI R20, LOW(RAMEND)
 000003 bf4d      		OUT SPL, R20
-000004 ef5f      		LDI R21, 0xFF
-000005 bb51      		OUT DDRD, R21
-000006 ef40      		LDI R20, 0xF0
-000007 bb44      		OUT KEY_DDR, R20
+000004 ef40      		LDI R20, 0xF0
+000005 bb47      		OUT KEY_DDR, R20
                  
                  
-000008 ef5f      		LDI R21,0xFF;
-000009 bb5a      		OUT LCD_DDDR, R21 ;LCD data port is output
-00000a bb57      		OUT LCD_CDDR, R21 ;LCD command port is output
-00000b 98c2      		CBI LCD_CPRT,LCD_EN;LCD EN = 0
-00000c 940e 032e 		CALL DELAY_2ms ;wait for power on
-00000e e308      		LDI R16,0x38 ;init LCD 2 lines,5x7 matrix
-00000f 940e 030f 		CALL CMNDWRT ;call command function
-000011 940e 032e 		CALL DELAY_2ms ;wait 2 ms
-000013 e00e      		LDI R16,0x0E ;display on, cursor on
-000014 940e 030f 		CALL CMNDWRT ;call command function
-000016 e001      		LDI R16,0x01 ;clear LCD
-000017 940e 030f 		CALL CMNDWRT ;call command function
-000019 940e 032e 		CALL DELAY_2ms ;wait 2 ms
+000006 ef5f      		LDI R21,0xFF;
+000007 bb54      		OUT LCD_DDDR, R21 ;LCD data port is output
+000008 bb51      		OUT LCD_CDDR, R21 ;LCD command port is output
+000009 9892      		CBI LCD_CPRT,LCD_EN;LCD EN = 0
+00000a 940e 007b 		CALL DELAY_2ms ;wait for power on
+00000c e308      		LDI R16,0x38 ;init LCD 2 lines,5x7 matrix
+00000d 940e 005c 		CALL CMNDWRT ;call command function
+00000f 940e 007b 		CALL DELAY_2ms ;wait 2 ms
+000011 e00e      		LDI R16,0x0E ;display on, cursor on
+000012 940e 005c 		CALL CMNDWRT ;call command function
+000014 e001      		LDI R16,0x01 ;clear LCD
+000015 940e 005c 		CALL CMNDWRT ;call command function
+000017 940e 007b 		CALL DELAY_2ms ;wait 2 ms
                  
                  
                  GROUND_ALL_ROWS: 	
-00001b e04f      		LDI R20, 0x0F
-00001c bb45      		OUT KEY_PORT, R20
+000019 e04f      		LDI R20, 0x0F
+00001a bb48      		OUT KEY_PORT, R20
                  WAIT_FOR_RELEASE:
-00001d 0000      		NOP
-00001e b353      		IN R21, KEY_PIN
-00001f 705f      		ANDI R21, 0x0F
-000020 305f      		CPI R21, 0x0F
-000021 f7d9      		BRNE WAIT_FOR_RELEASE
+00001b 0000      		NOP
+00001c b356      		IN R21, KEY_PIN
+00001d 705f      		ANDI R21, 0x0F
+00001e 305f      		CPI R21, 0x0F
+00001f f7d9      		BRNE WAIT_FOR_RELEASE
                  WAIT_FOR_KEY:
-000022 0000      		NOP
-000023 b353      		IN R21, KEY_PIN				 		
-000024 705f      		ANDI R21, 0x0F
-000025 305f      		CPI R21, 0x0F
-000026 f3d9      		BREQ WAIT_FOR_KEY
-000027 940e 005e 		CALL WAIT15MS
-000029 b353      		IN R21, KEY_PIN
-00002a 705f      		ANDI R21, 0x0F
-00002b 305f      		CPI R21, 0x0F
-00002c f3a9      		BREQ WAIT_FOR_KEY
-00002d e75f      		LDI R21, 0b01111111
-00002e bb55      		OUT KEY_PORT, R21
-00002f 0000      		NOP
-000030 b353      		IN R21, KEY_PIN
-000031 705f      		ANDI R21, 0x0F
-000032 305f      		CPI R21, 0x0F
-000033 f4a9      		BRNE COL1
+000020 0000      		NOP
+000021 b356      		IN R21, KEY_PIN				 		
+000022 705f      		ANDI R21, 0x0F
+000023 305f      		CPI R21, 0x0F
+000024 f3d9      		BREQ WAIT_FOR_KEY
+000025 940e 0083 		CALL WAIT15MS
+000027 b356      		IN R21, KEY_PIN
+000028 705f      		ANDI R21, 0x0F
+000029 305f      		CPI R21, 0x0F
+00002a f3a9      		BREQ WAIT_FOR_KEY
+00002b e75f      		LDI R21, 0b01111111
+00002c bb58      		OUT KEY_PORT, R21
+00002d 0000      		NOP
+00002e b356      		IN R21, KEY_PIN
+00002f 705f      		ANDI R21, 0x0F
+000030 305f      		CPI R21, 0x0F
+000031 f4a9      		BRNE COL1
                  
-000034 eb5f      		LDI R21, 0b10111111
-000035 bb55      		OUT KEY_PORT, R21
-000036 0000      		NOP
-000037 b353      		IN R21, KEY_PIN
-000038 705f      		ANDI R21, 0x0F
-000039 305f      		CPI R21, 0x0F
-00003a f489      		BRNE COL2
+000032 eb5f      		LDI R21, 0b10111111
+000033 bb58      		OUT KEY_PORT, R21
+000034 0000      		NOP
+000035 b356      		IN R21, KEY_PIN
+000036 705f      		ANDI R21, 0x0F
+000037 305f      		CPI R21, 0x0F
+000038 f489      		BRNE COL2
                  
-00003b ed5f      		LDI R21, 0b11011111
-00003c bb55      		OUT KEY_PORT, R21
-00003d 0000      		NOP
-00003e b353      		IN R21, KEY_PIN
-00003f 705f      		ANDI R21, 0x0F
-000040 305f      		CPI R21, 0x0F
-000041 f469      		BRNE COL3
+000039 ed5f      		LDI R21, 0b11011111
+00003a bb58      		OUT KEY_PORT, R21
+00003b 0000      		NOP
+00003c b356      		IN R21, KEY_PIN
+00003d 705f      		ANDI R21, 0x0F
+00003e 305f      		CPI R21, 0x0F
+00003f f469      		BRNE COL3
                  
-000042 ee5f      		LDI R21, 0b11101111
-000043 bb55      		OUT KEY_PORT, R21
-000044 0000      		NOP
-000045 b353      		IN R21, KEY_PIN
-000046 705f      		ANDI R21, 0x0F
-000047 305f      		CPI R21, 0x0F
-000048 f449      		BRNE COL4
+000040 ee5f      		LDI R21, 0b11101111
+000041 bb58      		OUT KEY_PORT, R21
+000042 0000      		NOP
+000043 b356      		IN R21, KEY_PIN
+000044 705f      		ANDI R21, 0x0F
+000045 305f      		CPI R21, 0x0F
+000046 f449      		BRNE COL4
                  
                  COL1:
-000049 e0e0      		LDI R30, LOW(KCODE0<<1)
-00004a e0f6      		LDI R31, HIGH(KCODE0<<1)
-00004b c009      		RJMP FIND	
+000047 e0ec      		LDI R30, LOW(KCODE0<<1)
+000048 e0f6      		LDI R31, HIGH(KCODE0<<1)
+000049 c009      		RJMP FIND	
                  
                  COL2:
-00004c e0e4      		LDI R30, LOW(KCODE1<<1)
-00004d e0f6      		LDI R31, HIGH(KCODE1<<1)
-00004e c006      		RJMP FIND
+00004a e0e8      		LDI R30, LOW(KCODE1<<1)
+00004b e0f6      		LDI R31, HIGH(KCODE1<<1)
+00004c c006      		RJMP FIND
                  
                  COL3:
-00004f e0e8      		LDI R30, LOW(KCODE2<<1)
-000050 e0f6      		LDI R31, HIGH(KCODE2<<1)
-000051 c003      		RJMP FIND
+00004d e0e4      		LDI R30, LOW(KCODE2<<1)
+00004e e0f6      		LDI R31, HIGH(KCODE2<<1)
+00004f c003      		RJMP FIND
                  
                  COL4:
-000052 e0ec      		LDI R30, LOW(KCODE3<<1)
-000053 e0f6      		LDI R31, HIGH(KCODE3<<1)
-000054 c000      		RJMP FIND	
+000050 e0e0      		LDI R30, LOW(KCODE3<<1)
+000051 e0f6      		LDI R31, HIGH(KCODE3<<1)
+000052 c000      		RJMP FIND	
                  
                  FIND:
-000055 9556      	LSR R21
-000056 f410      	BRCC MATCH
-000057 9145      	LPM R20, Z+
-000058 cffc      	RJMP FIND
+000053 9556      	LSR R21
+000054 f410      	BRCC MATCH
+000055 9145      	LPM R20, Z+
+000056 cffc      	RJMP FIND
                  
                  MATCH:
-000059 9144      	LPM R20, Z
-00005a bb42      	OUT PORTD, R20
-00005b 940e 0308 	CALL DISPLAY_LCD
-00005d cfbd      	RJMP GROUND_ALL_ROWS
+000057 9144      	LPM R20, Z
+000058 2f04      	MOV R16, R20
+000059 940e 0066 	CALL DATAWRT
+00005b cfbd      	RJMP GROUND_ALL_ROWS
                  
-00005e e002      WAIT15MS: LDI R16, 0x02
-00005f ef1f      Delay:	LDI R17, 0xFF; 1 clock cycle
-000060 ef2f      Loop1:	LDI R18, 0xFF; 1 clock cycle
-000061 952a      Loop2:	DEC R18; 1 clock cycle
-000062 f7f1      		BRNE Loop2; 2 clock cycles
-000063 951a      		DEC R17; 1 clock cycle
-000064 f7d9      		BRNE Loop1; 2 clock cycles
-000065 950a      		DEC R16
-000066 f7b9      		BRNE WAIT15MS
-                 		; Totally, (1+3*255)*(5*255)*2 close to the square of the earlier delay.
-000067 9508      		RET				
-                 
-                 .ORG 0x300
-                 
-000300 3130
-000301 3332      KCODE0:  .DB '0', '1', '2', '3'
-000302 3534
-000303 3736      KCODE1:  .DB '4', '5', '6', '7'
-000304 3938
-000305 4241      KCODE2:	 .DB '8', '9', 'A', 'B'
-000306 4443
-000307 4645      KCODE3:  .DB 'C', 'D', 'E', 'F'	
-                 ;---------------------------------------------------------------------------------------
-                 
-000308 e006      DISPLAY_LCD:	LDI R16,0x06 ;shift cursor right
-000309 940e 030f 				CALL CMNDWRT ;call command function
-00030b e408      				LDI R16, 'H' ;display letter 'H'
-00030c 940e 0319 				CALL DATAWRT ;call data write function		
-00030e 9508      				RET
-                 				
                  CMNDWRT: 
-00030f bb0b      				OUT LCD_DPRT,R16 ; LCD data port = R16 -
-000310 98c0      				CBI LCD_CPRT,LCD_RS ; RS 0 for command
-000311 98c1      				CBI LCD_CPRT,LCD_RW ;RW = 0 for write
-000312 9ac2      				SBI LCD_CPRT,LCD_EN ;EN = 1
-000313 940e 0323 				CALL SDELAY ;make a wide EN pulse
-000315 98c2      				CBI LCD_CPRT,LCD_EN ;EN=O for H-to-L pulse
-000316 940e 0326 				CALL DELAY_100us ;wait 100 us
-000318 9508      				RET
+00005c bb05      				OUT LCD_DPRT,R16 ; LCD data port = R16 -
+00005d 9890      				CBI LCD_CPRT,LCD_RS ; RS 0 for command
+00005e 9891      				CBI LCD_CPRT,LCD_RW ;RW = 0 for write
+00005f 9a92      				SBI LCD_CPRT,LCD_EN ;EN = 1
+000060 940e 0070 				CALL SDELAY ;make a wide EN pulse
+000062 9892      				CBI LCD_CPRT,LCD_EN ;EN=O for H-to-L pulse
+000063 940e 0073 				CALL DELAY_100us ;wait 100 us
+000065 9508      				RET
+                 
                  
                  DATAWRT:
-000319 bb0b      				OUT LCD_DPRT,R16 ;LCD data port = Rl6 -
-00031a 9ac0      				SBI LCD_CPRT,LCD_RS ;RS 1 for data
-00031b 98c1      				CBI LCD_CPRT,LCD_RW ;RW = 0 for write
-00031c 9ac2      				SBI LCD_CPRT,LCD_EN ;EN = 1
-00031d 940e 0323 				CALL SDELAY ;make a wide EN pulse
-00031f 98c2      				CBI LCD_CPRT,LCD_EN ;EN=O for H-to-L pulse
-000320 940e 0326 				CALL DELAY_100us ;wait 100 us
-000322 9508      				RET
-                 
-000323 0000      SDELAY:			NOP
-000324 0000      				NOP
-000325 9508      				RET
+000066 bb05      				OUT LCD_DPRT,R16 ;LCD data port = Rl6 -
+000067 9a90      				SBI LCD_CPRT,LCD_RS ;RS 1 for data
+000068 9891      				CBI LCD_CPRT,LCD_RW ;RW = 0 for write
+000069 9a92      				SBI LCD_CPRT,LCD_EN ;EN = 1
+00006a 940e 0070 				CALL SDELAY ;make a wide EN pulse
+00006c 9892      				CBI LCD_CPRT,LCD_EN ;EN=O for H-to-L pulse
+00006d 940e 0073 				CALL DELAY_100us ;wait 100 us
+00006f 9508      				RET
+000070 0000      SDELAY:			NOP
+000071 0000      				NOP
+000072 9508      				RET
                  
                  DELAY_100us:
-000326 931f      				PUSH R17
-000327 e31c      				LDI R17,60
-000328 940e 0323 DRO:			CALL SDELAY
-00032a 951a      				DEC R17
-00032b f7e1      				BRNE DRO
-00032c 911f      				POP R17
-00032d 9508      				RET
+000073 931f      				PUSH R17
+000074 e31c      				LDI R17,60
+000075 940e 0070 DRO:			CALL SDELAY
+000077 951a      				DEC R17
+000078 f7e1      				BRNE DRO
+000079 911f      				POP R17
+00007a 9508      				RET
                  
                  DELAY_2ms:
-00032e 931f      				PUSH R17
-00032f e114      				LDI R17,20
-000330 940e 0326 LDRO:			CALL DELAY_100us
-000332 951a      				DEC R17
-000333 f7e1      				BRNE LDRO
-000334 911f      				POP R17
+00007b 931f      				PUSH R17
+00007c e114      				LDI R17,20
+00007d 940e 0073 LDRO:			CALL DELAY_100us
+00007f 951a      				DEC R17
+000080 f7e1      				BRNE LDRO
+000081 911f      				POP R17
+000082 9508      				RET		
+                 
+                 WAIT15MS: 	;place a code to wait 15 ms ;here
+000083 931f      PUSH R17
+000084 e916      LDI R17,150
+000085 940e 0073 LDR1: CALL DELAY_100us
+000087 951a      DEC R17
+000088 f7e1      BRNE LDR1
+000089 911f      POP R17
+00008a 9508      RET		
+                 
+                 .ORG 0x300
+000300 3130
+000301 3332      KCODE3:  .DB '0', '1', '2', '3'
+000302 3534
+000303 3736      KCODE2:  .DB '4', '5', '6', '7'
+000304 3938
+000305 4241      KCODE1:	 .DB '8', '9', 'A', 'B'
+000306 4443
+000307 4645      KCODE0:  .DB 'C', 'D', 'E', 'F'	
+                 ;---------------------------------------------------------------------------------------
+                 
+                 
+                 				
+                 
+                 
+                 
+                 
+                 
 
 
 RESOURCE USE INFORMATION
@@ -1082,37 +1080,37 @@ counted separately from r26..r31 here.
 "ATmega32" register use summary:
 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 r5 :   0 r6 :   0 r7 :   0 
 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 r13:   0 r14:   0 r15:   0 
-r16:   9 r17:  10 r18:   2 r19:   0 r20:  11 r21:  35 r22:   0 r23:   0 
+r16:   6 r17:  12 r18:   0 r19:   0 r20:  11 r21:  33 r22:   0 r23:   0 
 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 r29:   0 r30:   4 r31:   4 
 x  :   0 y  :   0 z  :   2 
-Registers used: 8 out of 35 (22.9%)
+Registers used: 7 out of 35 (20.0%)
 
 "ATmega32" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
 andi  :   7 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   1 brcs  :   0 break :   0 breq  :   2 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :  10 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :  16 cbi   :   6 cbr   :   0 
+brne  :   8 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :  15 cbi   :   6 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :   7 cpse  :   0 dec   :   5 eor   :   0 fmul  :   0 fmuls :   0 
+cpi   :   7 cpse  :   0 dec   :   3 eor   :   0 fmul  :   0 fmuls :   0 
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   7 inc   :   0 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :  28 lds   :   0 lpm   :   3 lsl   :   0 
-lsr   :   1 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   8 or    :   0 ori   :   0 out   :  14 pop   :   2 
-push  :   2 rcall :   0 ret   :   7 reti  :   0 rjmp  :   6 rol   :   0 
+ld    :   0 ldd   :   0 ldi   :  23 lds   :   0 lpm   :   3 lsl   :   0 
+lsr   :   1 mov   :   1 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
+neg   :   0 nop   :   8 or    :   0 ori   :   0 out   :  12 pop   :   3 
+push  :   3 rcall :   0 ret   :   6 reti  :   0 rjmp  :   6 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   3 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 19 out of 113 (16.8%)
+Instructions used: 20 out of 113 (17.7%)
 
 "ATmega32" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00066c    300     16    316   32768   1.0%
+[.cseg] 0x000000 0x000610    278     16    294   32768   0.9%
 [.dseg] 0x000060 0x000060      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 

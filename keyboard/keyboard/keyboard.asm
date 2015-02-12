@@ -7,15 +7,16 @@
 
 
  .INCLUDE "M32DEF.INC"
-.EQU KEY_PORT = PORTC
-.EQU KEY_PIN = PINC
-.EQU KEY_DDR = DDRC
-.EQU LCD_DPRT = PORTA ; LCD DATA PORT
-.EQU LCD_DDDR = DDRA ;LCD DATA DDR
-.EQU LCD_DPIN = PINA ;LCD DATA PIN
-.EQU LCD_CPRT = PORTB ;LCD COMMANDS PORT
-.EQU LCD_CDDR = DDRB ;LCD COMMANDS DDR
-.EQU LCD_CPIN = PINB ;LCD COMMANDS PIN
+ .ORG 0
+.EQU KEY_PORT = PORTB
+.EQU KEY_PIN = PINB
+.EQU KEY_DDR = DDRB
+.EQU LCD_DPRT = PORTC; LCD DATA PORT
+.EQU LCD_DDDR = DDRC ;LCD DATA DDR
+.EQU LCD_DPIN = PINC ;LCD DATA PIN
+.EQU LCD_CPRT = PORTD ;LCD COMMANDS PORT
+.EQU LCD_CDDR = DDRD ;LCD COMMANDS DDR
+.EQU LCD_CPIN = PIND ;LCD COMMANDS PIN
 .EQU LCD_RS = 0 ;LCD RS
 .EQU LCD_RW = 1 ;LCD RW
 .EQU LCD_EN = 2 ;LCD EN
@@ -24,8 +25,6 @@
 		OUT SPH, R20
 		LDI R20, LOW(RAMEND)
 		OUT SPL, R20
-		LDI R21, 0xFF
-		OUT DDRD, R21
 		LDI R20, 0xF0
 		OUT KEY_DDR, R20
 
@@ -125,36 +124,10 @@ FIND:
 
 MATCH:
 	LPM R20, Z
-	OUT PORTD, R20
-	CALL DISPLAY_LCD
+	MOV R16, R20
+	CALL DATAWRT
 	RJMP GROUND_ALL_ROWS
 
-WAIT15MS: LDI R16, 0x02
-Delay:	LDI R17, 0xFF; 1 clock cycle
-Loop1:	LDI R18, 0xFF; 1 clock cycle
-Loop2:	DEC R18; 1 clock cycle
-		BRNE Loop2; 2 clock cycles
-		DEC R17; 1 clock cycle
-		BRNE Loop1; 2 clock cycles
-		DEC R16
-		BRNE WAIT15MS
-		; Totally, (1+3*255)*(5*255)*2 close to the square of the earlier delay.
-		RET				
-
-.ORG 0x300
-
-KCODE0:  .DB '0', '1', '2', '3'
-KCODE1:  .DB '4', '5', '6', '7'
-KCODE2:	 .DB '8', '9', 'A', 'B'
-KCODE3:  .DB 'C', 'D', 'E', 'F'	
-;---------------------------------------------------------------------------------------
-
-DISPLAY_LCD:	LDI R16,0x06 ;shift cursor right
-				CALL CMNDWRT ;call command function
-				LDI R16, 'H' ;display letter 'H'
-				CALL DATAWRT ;call data write function		
-				RET
-				
 CMNDWRT: 
 				OUT LCD_DPRT,R16 ; LCD data port = R16 -
 				CBI LCD_CPRT,LCD_RS ; RS 0 for command
@@ -165,6 +138,7 @@ CMNDWRT:
 				CALL DELAY_100us ;wait 100 us
 				RET
 
+
 DATAWRT:
 				OUT LCD_DPRT,R16 ;LCD data port = Rl6 -
 				SBI LCD_CPRT,LCD_RS ;RS 1 for data
@@ -174,7 +148,6 @@ DATAWRT:
 				CBI LCD_CPRT,LCD_EN ;EN=O for H-to-L pulse
 				CALL DELAY_100us ;wait 100 us
 				RET
-
 SDELAY:			NOP
 				NOP
 				RET
@@ -195,4 +168,29 @@ LDRO:			CALL DELAY_100us
 				DEC R17
 				BRNE LDRO
 				POP R17
-				RET												
+				RET		
+
+WAIT15MS: 	;place a code to wait 15 ms ;here
+PUSH R17
+LDI R17,150
+LDR1: CALL DELAY_100us
+DEC R17
+BRNE LDR1
+POP R17
+RET		
+
+.ORG 0x300
+KCODE3:  .DB '0', '1', '2', '3'
+KCODE2:  .DB '4', '5', '6', '7'
+KCODE1:	 .DB '8', '9', 'A', 'B'
+KCODE0:  .DB 'C', 'D', 'E', 'F'	
+;---------------------------------------------------------------------------------------
+
+
+				
+
+
+
+
+
+										

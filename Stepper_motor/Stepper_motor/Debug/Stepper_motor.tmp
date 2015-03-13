@@ -1,0 +1,31 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.57</VERSION>
+ <DEVICE>"ATmega32"</DEVICE>
+ <WORKING_DIR>C:\Users\Thyagu\Documents\Embedded_Lab\Stepper_motor\Stepper_motor\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Stepper_motor\Stepper_motor\Stepper_motor.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include\m32def.inc</FILE>
+  <FILE>C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include\M32DEF.INC</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Stepper_motor\Stepper_motor\Debug/Stepper_motor.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Stepper_motor.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Stepper_motor.map</FILE>
+  <FILE>Stepper_motor.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <LOOP1><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Stepper_motor\Stepper_motor\Stepper_motor.asm</FILE><LINE>19</LINE></LOOP1>
+  <LOOP2><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Stepper_motor\Stepper_motor\Stepper_motor.asm</FILE><LINE>22</LINE></LOOP2>
+  <DELAY><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Stepper_motor\Stepper_motor\Stepper_motor.asm</FILE><LINE>65</LINE></DELAY>
+  <D_L1><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Stepper_motor\Stepper_motor\Stepper_motor.asm</FILE><LINE>66</LINE></D_L1>
+  <D_L2><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\Stepper_motor\Stepper_motor\Stepper_motor.asm</FILE><LINE>67</LINE></D_L2>
+ </LABELS>
+</ASSEMBLER_INFO>

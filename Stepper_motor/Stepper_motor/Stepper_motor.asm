@@ -1,0 +1,72 @@
+/*
+ * Stepper_motor.asm
+ *
+ *  Created: 12-02-2015 20:28:34
+ *   Author: Thyagu
+ */ 
+ ; To make it rotate continuously
+ .INCLUDE "M32DEF.INC"
+ .ORG 0x0
+ .EQU TEST_LCD = 0
+ LDI R20, HIGH(RAMEND)
+ OUT SPH, R20
+ LDI R20, LOW(RAMEND)
+ OUT SPL, R20
+ LDI R20, 0xFF
+ OUT DDRB, R20
+ ;CBI DDRA, 0
+ SBI PORTD,TEST_LCD
+LOOP1:		
+			LDI R21, 0x14
+			
+LOOP2:		LDI R20, 0x66
+			OUT PORTB, R20
+			CALL DELAY
+			
+			LDI R20, 0xCC
+			OUT PORTB, R20
+			CALL DELAY
+			
+			LDI R20, 0x99
+			OUT PORTB, R20
+			CALL DELAY
+			
+			LDI R20, 0x33
+			OUT PORTB, R20
+			CALL DELAY			 
+			
+			;DEC R21
+			;BREQ LOOP3
+			RJMP LOOP2
+
+;LOOP3:		
+;			LDI R21, 0x0A
+;			
+;LOOP4:		LDI R20, 0x33
+;			OUT PORTB, R20
+;			CALL DELAY
+;			
+;			LDI R20, 0x99
+;			OUT PORTB, R20
+;			CALL DELAY
+;			
+;			LDI R20, 0xCC
+;			OUT PORTB, R20
+;			CALL DELAY
+;			
+;			LDI R20, 0x66
+;			OUT PORTB, R20
+;			CALL DELAY			 
+;			
+;			DEC R21
+;			BREQ LOOP1
+;			RJMP LOOP4
+	  
+DELAY:		LDI R22, 0x10
+D_L1:		LDI R23, 0x9F
+D_L2:		DEC R23
+			BRNE D_L2 
+			DEC R22
+			BRNE D_L1
+			RET
+

@@ -22,27 +22,27 @@
   <FILE>keyboard.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <DELAY_2ms><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>164</LINE></DELAY_2ms>
-  <CMNDWRT><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>131</LINE></CMNDWRT>
-  <GROUND_ALL_ROWS><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>47</LINE></GROUND_ALL_ROWS>
-  <WAIT_FOR_RELEASE><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>50</LINE></WAIT_FOR_RELEASE>
-  <WAIT_FOR_KEY><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>56</LINE></WAIT_FOR_KEY>
-  <WAIT15MS><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>173</LINE></WAIT15MS>
-  <COL1><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>99</LINE></COL1>
-  <COL2><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>104</LINE></COL2>
-  <COL3><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>109</LINE></COL3>
-  <COL4><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>114</LINE></COL4>
-  <KCODE0><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>186</LINE></KCODE0>
-  <FIND><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>119</LINE></FIND>
-  <KCODE1><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>185</LINE></KCODE1>
-  <KCODE2><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>184</LINE></KCODE2>
-  <KCODE3><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>183</LINE></KCODE3>
-  <MATCH><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>125</LINE></MATCH>
-  <DATAWRT><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>142</LINE></DATAWRT>
-  <SDELAY><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>151</LINE></SDELAY>
-  <DELAY_100us><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>155</LINE></DELAY_100us>
-  <DRO><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>158</LINE></DRO>
-  <LDRO><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>167</LINE></LDRO>
-  <LDR1><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>176</LINE></LDR1>
+  <DELAY_2ms><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>178</LINE></DELAY_2ms>
+  <CMNDWRT><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>145</LINE></CMNDWRT>
+  <GROUND_ALL_ROWS><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>51</LINE></GROUND_ALL_ROWS>
+  <WAIT_FOR_RELEASE><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>54</LINE></WAIT_FOR_RELEASE>
+  <WAIT_FOR_KEY><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>60</LINE></WAIT_FOR_KEY>
+  <WAIT15MS><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>187</LINE></WAIT15MS>
+  <COL1><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>103</LINE></COL1>
+  <COL2><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>108</LINE></COL2>
+  <COL3><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>113</LINE></COL3>
+  <COL4><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>118</LINE></COL4>
+  <KCODE0><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>200</LINE></KCODE0>
+  <FIND><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>123</LINE></FIND>
+  <KCODE1><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>199</LINE></KCODE1>
+  <KCODE2><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>198</LINE></KCODE2>
+  <KCODE3><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>197</LINE></KCODE3>
+  <MATCH><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>129</LINE></MATCH>
+  <DATAWRT><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>156</LINE></DATAWRT>
+  <SDELAY><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>165</LINE></SDELAY>
+  <DELAY_100us><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>169</LINE></DELAY_100us>
+  <DRO><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>172</LINE></DRO>
+  <LDRO><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>181</LINE></LDRO>
+  <LDR1><FILE>C:\Users\Thyagu\Documents\Embedded_Lab\keyboard\keyboard\keyboard.asm</FILE><LINE>190</LINE></LDR1>
  </LABELS>
 </ASSEMBLER_INFO>
